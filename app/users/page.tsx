@@ -8,9 +8,11 @@ const CreateReferral = () => {
 	const [key, setKey] = useState("");
 	const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		localStorage.setItem(username, hashit(username).toString());
+		// localStorage.setItem(username + "_ref", "0"); // doesnt work
+		localStorage.setItem(username + "_ref", "0");
+		localStorage.setItem(username, hashit(username).toString()); // works
 		let value;
-		value = localStorage.getItem(username) || "";
+		value = localStorage.getItem(username + "test") || "";
 		setKey(value);
 	};
 
