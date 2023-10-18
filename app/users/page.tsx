@@ -5,10 +5,13 @@ import hashit from "./hashing";
 
 const CreateReferral = () => {
 	const [username, setUsername] = useState("");
-
+	const [key, setKey] = useState("");
 	const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		localStorage.setItem(username, hashit(username).toString());
+		let value;
+		value = localStorage.getItem(username) || "";
+		setKey(value);
 	};
 
 	return (
@@ -26,11 +29,10 @@ const CreateReferral = () => {
 					hello
 				</button>
 				<p>
-					{username}: {localStorage.getItem(username)}
+					{username}: {key}
 				</p>
 			</form>
 
-			
 			<button
 				onClick={() => {
 					localStorage.clear();
